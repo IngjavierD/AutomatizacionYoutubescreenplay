@@ -1,5 +1,6 @@
 package com.Youtube.Interactions;
 
+import com.Youtube.Task.BuscarCanciontask;
 import com.Youtube.Task.PaginaPrincipaltask;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
@@ -14,15 +15,14 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class SeleccionarCancion implements Interaction {
 
-    PaginaPrincipaltask paginaPrincipal =new PaginaPrincipaltask();
     @Override
     public <T extends Actor> void performAs(T actor) {
         List<WebElementFacade> ListaCanciones = LBL_Canciones.resolveAllFor(actor);
         for (int i=0;i<ListaCanciones.size();i++){
             System.out.println(i+" : "+ListaCanciones.get(i).getText());
         }
-// Eliminar elementos que no contienen la subcadena (ignorando mayúsculas y minúsculas)
-        ListaCanciones.removeIf(elemento -> !elemento.getText().toLowerCase().contains(paginaPrincipal.getNombrecancionbuscar().toLowerCase()));
+        // Eliminar elementos que no contienen la subcadena (ignorando mayúsculas y minúsculas)
+        ListaCanciones.removeIf(elemento -> !elemento.getText().toLowerCase().contains(BuscarCanciontask.getNombrecancionbuscar().toLowerCase()));
         for (int i=0;i<ListaCanciones.size();i++){
             System.out.println(i+" : "+ListaCanciones.get(i).getText());
         }

@@ -1,6 +1,7 @@
 package com.Youtube.stepdefinitions;
 
 import com.Youtube.Questions.ValidacionCancionQuestions;
+import com.Youtube.Task.BuscarCanciontask;
 import com.Youtube.Task.PaginaPrincipaltask;
 import com.Youtube.Task.SeleccionarCanciontask;
 import com.Youtube.Task.TomarNombreReproductortask;
@@ -22,7 +23,8 @@ public class ReproducirYoutubeStepDefinitions {
     @Dado("que el usuario abre el navegador")
     public void queElUsuarioAbreElNavegador() {
         theActorCalled("user").wasAbleTo(
-                PaginaPrincipaltask.on()
+                PaginaPrincipaltask.on(),
+                BuscarCanciontask.on()
         );
     }
     @Cuando("busca y selecciona aleatoriamente una canción en YouTube")

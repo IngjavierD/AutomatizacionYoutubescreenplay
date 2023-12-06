@@ -11,19 +11,16 @@ import javax.swing.*;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static com.Youtube.UI.PaginaPrincipalUI.TXT_SEARCH;
 public class PaginaPrincipaltask implements Task {
-    private String Nombrecancionbuscar="Citrix";
-    public String getNombrecancionbuscar() {
-        return Nombrecancionbuscar;
-    }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Open.url("https://www.youtube.com/"),
-                Enter.theValue(Nombrecancionbuscar).into(TXT_SEARCH).thenHit(Keys.ENTER)
+                Open.url("https://www.youtube.com/")
         );
     }
+
     public static PaginaPrincipaltask on(){
         return instrumented(PaginaPrincipaltask.class);
     }
+
 }
